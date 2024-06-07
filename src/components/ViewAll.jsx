@@ -1,7 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from './Navbar'
 
-function ViewAll() {
+const ViewAll = () => {
+    const [data, changeData] = useState(
+        [
+            {"book_title":"The Alchemist","author":"Paulo Coelho","publisher":"Xyz Publications","price":250},
+            {"book_title":"Harry Potter","author":"JK Rowling","publisher":"cherry blossom","price":399},
+            {"book_title":"The Jungle Book","author":"Rudyard Kipling","publisher":"h&h Publications","price":650},
+            {"book_title":"The Goat life","author":"Benyamin","publisher":"abc Publications","price":350},
+            {"book_title":"Oliver Twist","author":"Charles Dickens","publisher":"h&p Publications","price":199}
+            
+        ]
+    )
     return (
         <div>
            <Navbar/>
@@ -20,26 +30,20 @@ function ViewAll() {
                                     <th scope="col">Price</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">Harry Potter</th>
-                                    <td>J.K Rowling</td>
-                                    <td>Cherry Blossom</td>
-                                    <td>Rs.450</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">The Jungle Book</th>
-                                    <td>Rudyard Kipling</td>
-                                    <td>XyZ publications</td>
-                                    <td>Rs.399</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Sherlock Holmes</th>
-                                    <td>Sir Arthur Conan Doyle</td>
-                                    <td>Hz publications</td>
-                                    <td>Rs.399</td>
-                                </tr>
-                            </tbody>
+                            {data.map(
+                                (value, index) => {
+                                   return <tbody>
+                                   <tr>
+                                       <th scope="row">{value.book_title}</th>
+                                       <td>{value.author}</td>
+                                       <td>{value.publisher}</td>
+                                       <td>{value.price}</td>
+                                   </tr>
+                                  
+                               </tbody> 
+                                }
+                            )}
+                            
                         </table>
                     </div>
                 </div>
